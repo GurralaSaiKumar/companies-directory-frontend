@@ -74,7 +74,7 @@ export const CompaniesDirectoryTable = () => {
     const filteredRows = useMemo(() => {
         if (!search.trim()) return rows;
         return rows.filter((row) => deepSearch(row, search));
-    }, [rows, search]);
+    }, [rows, search,deepSearch]);
 
     const handleChangePage = (event, newPage) => setPage(newPage);
     const handleChangeRowsPerPage = (event) => {
