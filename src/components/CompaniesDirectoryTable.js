@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState,useCallback  } from "react";
 import {
     Table,
     TableBody,
@@ -60,7 +60,7 @@ export const CompaniesDirectoryTable = () => {
 
         setRows(sortedData);
     };
-    const deepSearch = (obj, searchText) => {
+    const deepSearch = useCallback((obj, searchText) => {
         if (obj == null) return false;
         const lowerSearch = searchText.toLowerCase();
 
@@ -69,7 +69,7 @@ export const CompaniesDirectoryTable = () => {
             if (typeof value === "object") return deepSearch(value, searchText);
             return value.toString().toLowerCase().includes(lowerSearch);
         });
-    };
+    },[]);
 
     const filteredRows = useMemo(() => {
         if (!search.trim()) return rows;
