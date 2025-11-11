@@ -33,7 +33,6 @@ export const CompaniesDirectoryTable = () => {
     }
         catch(e){
              return setRows(e)
-             console?.log(e,"e")
         }
     }
 
